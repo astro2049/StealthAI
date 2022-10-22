@@ -13,11 +13,13 @@ public class DroneController : MonoBehaviour
     public LookAroundState lookAroundState = new();
     public PatrolState patrolState = new();
 
-    public float walkRadius = 30;
+    public Vector3 initialPosition;
+    public float patrolRadius = 15;
     public float lookAroundCountDown = 0;
 
     private void Awake()
     {
+        initialPosition = transform.position;
         navMeshAgent = GetComponent<NavMeshAgent>();
     }
 

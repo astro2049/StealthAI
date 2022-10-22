@@ -25,10 +25,10 @@ public class PatrolState : IDroneState
 
     private Vector3 GetRandomLocation(DroneController drone)
     {
-        Vector3 randomLocation = Random.insideUnitSphere * drone.walkRadius;
-        randomLocation += drone.transform.position;
+        Vector3 randomLocation = Random.insideUnitSphere * drone.patrolRadius;
+        randomLocation += drone.initialPosition;
         NavMeshHit hit;
-        NavMesh.SamplePosition(randomLocation, out hit, drone.walkRadius, 1);
+        NavMesh.SamplePosition(randomLocation, out hit, drone.patrolRadius, 1);
         return hit.position;
     }
 
