@@ -20,6 +20,7 @@ public class PatrolState : IDroneState
 
     public void onExit(DroneController drone)
     {
+        drone.navMeshAgent.ResetPath();
     }
 
     private Vector3 GetRandomLocation(DroneController drone)
@@ -33,6 +34,6 @@ public class PatrolState : IDroneState
 
     private bool ReachedDestination(DroneController drone)
     {
-        return drone.navMeshAgent.pathStatus == NavMeshPathStatus.PathComplete;
+        return drone.navMeshAgent.pathStatus == NavMeshPathStatus.PathComplete && drone.navMeshAgent.remainingDistance == 0;
     }
 }

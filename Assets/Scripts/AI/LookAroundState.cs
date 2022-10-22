@@ -14,7 +14,7 @@ public class LookAroundState : IDroneState
 
     public void onEnter(DroneController drone)
     {
-        drone.lookAroundCountDown = 3;
+        drone.lookAroundCountDown = 2;
     }
 
     public void onExit(DroneController drone)
