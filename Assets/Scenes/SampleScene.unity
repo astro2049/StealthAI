@@ -742,6 +742,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movePositionTransform: {fileID: 1312237512}
+  navMeshAgent: {fileID: 0}
+  currentStateName: 
+  walkRadius: 30
+  lookAroundCountDown: 0
 --- !u!1 &481026738
 GameObject:
   m_ObjectHideFlags: 0
