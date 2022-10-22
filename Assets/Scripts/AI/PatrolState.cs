@@ -1,7 +1,14 @@
+using System.Numerics;
+using UnityEngine.AI;
+
 public class PatrolState : IDroneState
 {
     public IDroneState DoState(DroneController drone)
     {
+        if (ReachedDestination(drone))
+        {
+            return drone.lookAroundState;
+        }
         return drone.patrolState;
     }
 
@@ -12,5 +19,10 @@ public class PatrolState : IDroneState
 
     public void onExit(DroneController drone)
     {
+    }
+
+    private bool ReachedDestination(DroneController drone)
+    {
+        return drone.navMeshAgent.pathStatus == NavMeshPathStatus.PathComplete;
     }
 }
