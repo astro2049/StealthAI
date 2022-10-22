@@ -6,9 +6,10 @@ public class DroneController : MonoBehaviour
     [SerializeField] public Transform movePositionTransform;
     public NavMeshAgent navMeshAgent;
     [SerializeField] private string currentStateName;
-    public ChaseState chaseState = new();
-    private IDroneState currentState;
 
+    private IDroneState currentState;
+    private IdleState idleState = new();
+    public ChaseState chaseState = new();
     public LookAroundState lookAroundState = new();
     public PatrolState patrolState = new();
 
@@ -17,6 +18,11 @@ public class DroneController : MonoBehaviour
         navMeshAgent = GetComponent<NavMeshAgent>();
     }
 
+    private void OnEnable()
+    {
+        currentState = idleState;
+    }
+    
     // Start is called before the first frame update
     private void Start()
     {
@@ -25,12 +31,18 @@ public class DroneController : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        currentState = currentState.DoState(this);
-        currentStateName = currentState.ToString();
-    }
+        var nextState = currentState.DoState(this);
+        if (currentState == nextState)
+        {
+            currentState = nextState;
+        }
+        else
+        {
+            currentState.onExit(this);
+            currentState = nextState;
+            currentState.onEnter(this);
+        }
 
-    private void OnEnable()
-    {
-        currentState = patrolState;
+        currentStateName = currentState.ToString();
     }
 }

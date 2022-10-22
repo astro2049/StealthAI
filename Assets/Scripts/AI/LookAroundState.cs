@@ -4,4 +4,12 @@ public class LookAroundState : IDroneState
     {
         return null;
     }
+
+    public void onEnter(DroneController drone)
+    {
+    }
+
+    public void onExit(DroneController drone)
+    {
+    }
 }

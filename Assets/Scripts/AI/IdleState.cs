@@ -1,4 +1,4 @@
-public class PatrolState : IDroneState
+public class IdleState : IDroneState
 {
     public IDroneState DoState(DroneController drone)
     {
@@ -7,7 +7,6 @@ public class PatrolState : IDroneState
 
     public void onEnter(DroneController drone)
     {
-        drone.navMeshAgent.destination = drone.movePositionTransform.position;
     }
 
     public void onExit(DroneController drone)
