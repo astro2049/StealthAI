@@ -4,6 +4,10 @@ public class LookAroundState : IDroneState
 {
     public IDroneState DoState(DroneController drone)
     {
+        if (drone.fieldOfView.canSeePlayer)
+        {
+            return drone.chaseState;
+        }
         if (drone.lookAroundCountDown <= 0)
         {
             return drone.patrolState;

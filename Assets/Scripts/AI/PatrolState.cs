@@ -6,6 +6,10 @@ public class PatrolState : IDroneState
 {
     public IDroneState DoState(DroneController drone)
     {
+        if (drone.fieldOfView.canSeePlayer)
+        {
+            return drone.chaseState;
+        }
         if (ReachedDestination(drone))
         {
             return drone.lookAroundState;

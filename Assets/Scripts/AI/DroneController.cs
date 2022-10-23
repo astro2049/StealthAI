@@ -3,6 +3,7 @@ using UnityEngine.AI;
 
 public class DroneController : MonoBehaviour
 {
+    public FieldOfView fieldOfView;
     [SerializeField] public Transform movePositionTransform;
     public NavMeshAgent navMeshAgent;
     [SerializeField] private string currentStateName;
@@ -21,6 +22,7 @@ public class DroneController : MonoBehaviour
     {
         initialPosition = transform.position;
         navMeshAgent = GetComponent<NavMeshAgent>();
+        fieldOfView = GetComponent<FieldOfView>();
     }
 
     private void OnEnable()

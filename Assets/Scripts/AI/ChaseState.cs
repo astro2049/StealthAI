@@ -2,7 +2,7 @@ public class ChaseState : IDroneState
 {
     public IDroneState DoState(DroneController drone)
     {
-        return null;
+        return drone.chaseState;
     }
 
     public void onEnter(DroneController drone)
