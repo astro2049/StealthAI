@@ -894,7 +894,7 @@ GameObject:
   - component: {fileID: 365661380}
   - component: {fileID: 365661381}
   m_Layer: 0
-  m_Name: Drone
+  m_Name: Drone_Left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2743,7 +2743,7 @@ GameObject:
   - component: {fileID: 1366394677}
   - component: {fileID: 1366394676}
   m_Layer: 0
-  m_Name: Drone (2)
+  m_Name: Drone_Middle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2890,7 +2890,7 @@ Transform:
   - {fileID: 198196994}
   - {fileID: 245037094}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1371936362
 GameObject:
@@ -4266,7 +4266,7 @@ GameObject:
   - component: {fileID: 2092742030}
   - component: {fileID: 2092742029}
   m_Layer: 0
-  m_Name: Drone (1)
+  m_Name: Drone_Right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4284,8 +4284,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7509bd17f7bb23e428ea39d447bd1e7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 30
-  angle: 90
+  radius: 100
+  angle: 120
   player: {fileID: 0}
   targetMask:
     serializedVersion: 2
@@ -4413,7 +4413,7 @@ Transform:
   - {fileID: 2024497912}
   - {fileID: 564788536}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!1 &2142542652
 GameObject:

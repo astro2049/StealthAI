@@ -6,8 +6,6 @@ public class FieldOfView : MonoBehaviour
     public float radius;
     [Range(0, 360)] public float angle;
 
-    public GameObject player;
-
     public LayerMask targetMask;
     public LayerMask obstructionMask;
 
@@ -16,7 +14,6 @@ public class FieldOfView : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player");
         StartCoroutine(FOVRoutine());
     }
 

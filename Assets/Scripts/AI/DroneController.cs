@@ -17,12 +17,15 @@ public class DroneController : MonoBehaviour
     public Vector3 initialPosition;
     public float patrolRadius = 15;
     public float lookAroundCountDown = 0;
+    
+    public GameObject player;
 
     private void Awake()
     {
         initialPosition = transform.position;
         navMeshAgent = GetComponent<NavMeshAgent>();
         fieldOfView = GetComponent<FieldOfView>();
+        player = GameObject.FindGameObjectWithTag("Player");
     }
 
     private void OnEnable()
