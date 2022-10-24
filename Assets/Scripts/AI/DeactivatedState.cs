@@ -11,8 +11,6 @@ public class DeactivatedState : IDroneState
     public void onEnter(DroneController drone)
     {
         drone.navMeshAgent.enabled = false;
-        drone.AddComponent<Rigidbody>();
-        drone.GetComponent<Rigidbody>().useGravity = true;
     }
 
     public void onExit(DroneController drone)
