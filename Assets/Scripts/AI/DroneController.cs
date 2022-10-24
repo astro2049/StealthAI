@@ -13,7 +13,9 @@ public class DroneController : MonoBehaviour
     public ChaseState chaseState = new();
     public LookAroundState lookAroundState = new();
     public PatrolState patrolState = new();
+    public DeactivatedState deactivatedState = new();
 
+    public bool isActivated = true;
     public Vector3 initialPosition;
     public float patrolRadius = 15;
     public float lookAroundCountDown = 0;

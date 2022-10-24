@@ -1,13 +1,16 @@
 using UnityEngine;
-using UnityEngine.AI;
 
 public class ChaseState : IDroneState
 {
     public IDroneState DoState(DroneController drone)
     {
+        if (!drone.isActivated)
+        {
+            return drone.deactivatedState;
+        }
         if (drone.fieldOfView.canSeePlayer)
         {
-            drone.transform.position = Vector3.MoveTowards(drone.transform.position, drone.player.transform.position, 20 * Time.deltaTime);
+            drone.transform.position = Vector3.MoveTowards(drone.transform.position, drone.player.transform.position, 15 * Time.deltaTime);
             drone.transform.forward = drone.player.transform.position - drone.transform.position;
             return drone.chaseState;
         }
