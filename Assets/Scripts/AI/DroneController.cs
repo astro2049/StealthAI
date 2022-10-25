@@ -58,4 +58,13 @@ public class DroneController : MonoBehaviour
 
         currentStateName = currentState.ToString();
     }
+
+    public void SetLinesColor(Color color)
+    {
+        var lines = transform.GetComponentsInChildren<LineRenderer>();
+        foreach (var line in lines)
+        {
+            line.SetColors(color, color);
+        }
+    }
 }
