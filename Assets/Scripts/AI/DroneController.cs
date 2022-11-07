@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -66,5 +67,12 @@ public class DroneController : MonoBehaviour
         {
             line.SetColors(color, color);
         }
+    }
+    
+    public void SetStateText(string text, Color color)
+    {
+        var stateText = transform.GetComponentInChildren<TextMeshPro>();
+        stateText.text = text;
+        stateText.color = color;
     }
 }
