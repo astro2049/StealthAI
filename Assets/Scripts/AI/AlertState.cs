@@ -4,7 +4,7 @@ public class AlertState : IDroneState
 {
     public IDroneState DoState(DroneController drone)
     {
-        if (drone.alertCountDown <= 0)
+        if (drone.alertCountDownTimer <= 0)
         {
             if (drone.fieldOfView.canSeePlayer)
             {
@@ -12,7 +12,7 @@ public class AlertState : IDroneState
             }
             return drone.patrolState;
         }
-        drone.alertCountDown -= Time.deltaTime;
+        drone.alertCountDownTimer -= Time.deltaTime;
         return drone.alertState;
     }
 
@@ -22,11 +22,11 @@ public class AlertState : IDroneState
         drone.SetLinesColor(orange);
         drone.SetStateText("Alerted", orange);
         drone.SetLaserColor(orange);
-        drone.alertCountDown = 1f;
+        drone.alertCountDownTimer = drone.alertCountDown;
     }
 
     public void onExit(DroneController drone)
     {
-        drone.alertCountDown = 0;
+        drone.alertCountDownTimer = 0;
     }
 }
