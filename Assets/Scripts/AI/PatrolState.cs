@@ -13,7 +13,7 @@ public class PatrolState : IDroneState
         }
         if (drone.fieldOfView.canSeePlayer)
         {
-            return drone.chaseState;
+            return drone.alertState;
         }
         if (ReachedDestination(drone))
         {

@@ -10,7 +10,7 @@ public class LookAroundState : IDroneState
         }
         if (drone.fieldOfView.canSeePlayer)
         {
-            return drone.chaseState;
+            return drone.alertState;
         }
         if (drone.lookAroundCountDown <= 0)
         {

@@ -14,12 +14,14 @@ public class DroneController : MonoBehaviour
     public ChaseState chaseState = new();
     public LookAroundState lookAroundState = new();
     public PatrolState patrolState = new();
+    public AlertState alertState = new();
     public DeactivatedState deactivatedState = new();
 
     public bool isActivated = true;
     public Vector3 initialPosition;
     public float patrolRadius = 20;
     public float lookAroundCountDown = 0;
+    public float alertCountDown = 0;
     
     public GameObject player;
     private Material laserMaterial;
