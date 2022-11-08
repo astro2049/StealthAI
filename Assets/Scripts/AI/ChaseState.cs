@@ -25,6 +25,7 @@ public class ChaseState : IDroneState
     {
         drone.SetLinesColor(Color.yellow);
         drone.SetStateText("Chase", Color.yellow);
+        drone.SetLaserColor(Color.yellow);
         drone.navMeshAgent.ResetPath();
         drone.fieldOfView.angle = 360;
     }

@@ -12,6 +12,7 @@ public class DeactivatedState : IDroneState
     {
         drone.SetLinesColor(Color.red);
         drone.SetStateText("Deactivated", Color.red);
+        drone.SetLaserColor(Color.red);
         drone.navMeshAgent.enabled = false;
         drone.body.AddComponent<Rigidbody>();
     }

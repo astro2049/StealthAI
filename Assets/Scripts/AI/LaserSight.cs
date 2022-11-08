@@ -1,13 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Diagnostics;
 
 public class LaserSight : MonoBehaviour
 {
-    public float fov = 120f;
+    public float fov = 90f;
     public int sliceCount = 10;
     public float viewDistance = 10f;
+    
+    public LayerMask obstructionMask;
 
     // Start is called before the first frame update
     void Start()
@@ -23,19 +22,29 @@ public class LaserSight : MonoBehaviour
         int[] indices = new int[sliceCount * 3];
         
         vertices[0] = Vector3.zero;
+        int vertexIndex = 1;
         int triangleIndex = 0;
         for (int i = 0; i <= sliceCount; i++)
         {
             Vector3 vertex = origin + RotateVector(angle) * viewDistance;
-            vertices[i + 1] = vertex;
+            RaycastHit hit;
+            if (Physics.Raycast(origin, RotateVector(angle), out hit, viewDistance))
+            {
+                vertex = hit.point;
+            }
+            vertices[vertexIndex] = vertex;
             angle += angleIncrease;
 
             if (i >= 1)
             {
-                indices[triangleIndex++] = 0;
-                indices[triangleIndex++] = i - 1;
-                indices[triangleIndex++] = i;
+                indices[triangleIndex] = 0;
+                indices[triangleIndex + 1] = vertexIndex - 1;
+                indices[triangleIndex + 2] = vertexIndex;
+
+                triangleIndex += 3;
             }
+
+            vertexIndex++;
         }
 
         mesh.vertices = vertices;

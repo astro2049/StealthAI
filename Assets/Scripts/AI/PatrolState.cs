@@ -26,6 +26,7 @@ public class PatrolState : IDroneState
     {
         drone.SetLinesColor(Color.green);
         drone.SetStateText("Patrol", Color.green);
+        drone.SetLaserColor(Color.green);
         drone.navMeshAgent.destination = GetRandomLocation(drone);
     }
 

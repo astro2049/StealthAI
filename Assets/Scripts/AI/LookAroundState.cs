@@ -24,6 +24,7 @@ public class LookAroundState : IDroneState
     {
         drone.SetLinesColor(Color.green);
         drone.SetStateText("Look Around", Color.green);
+        drone.SetLaserColor(Color.green);
         drone.lookAroundCountDown = Random.Range(1.0f, 2.0f);
     }
 

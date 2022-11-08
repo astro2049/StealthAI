@@ -22,6 +22,7 @@ public class DroneController : MonoBehaviour
     public float lookAroundCountDown = 0;
     
     public GameObject player;
+    private Material laserMaterial;
 
     private void Awake()
     {
@@ -29,6 +30,7 @@ public class DroneController : MonoBehaviour
         navMeshAgent = GetComponent<NavMeshAgent>();
         fieldOfView = GetComponent<FieldOfView>();
         player = GameObject.FindGameObjectWithTag("Player");
+        laserMaterial = transform.Find("Body/Laser").gameObject.GetComponent<Renderer>().material;
     }
 
     private void OnEnable()
@@ -74,5 +76,11 @@ public class DroneController : MonoBehaviour
         var stateText = transform.GetComponentInChildren<TextMeshPro>();
         stateText.text = text;
         stateText.color = color;
+    }
+    
+    public void SetLaserColor(Color color)
+    {
+        color.a = 0.4f;
+        laserMaterial.color = color;
     }
 }
