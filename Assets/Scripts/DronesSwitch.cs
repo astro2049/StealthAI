@@ -18,6 +18,13 @@ public class DronesSwitch : MonoBehaviour
             {
                 drone.GetComponent<DroneController>().isActivated = false;
             }
+            LevelClear();
         }
+    }
+
+    private void LevelClear()
+    {
+        // Level clear, return to menu
+        Debug.Log("Level Clear");
     }
 }
