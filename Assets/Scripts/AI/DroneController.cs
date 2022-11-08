@@ -18,7 +18,7 @@ public class DroneController : MonoBehaviour
 
     public bool isActivated = true;
     public Vector3 initialPosition;
-    public float patrolRadius = 15;
+    public float patrolRadius = 20;
     public float lookAroundCountDown = 0;
     
     public GameObject player;

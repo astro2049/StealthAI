@@ -177,7 +177,7 @@ MonoBehaviour:
   currentStateName: 
   isActivated: 1
   initialPosition: {x: 0, y: 0, z: 0}
-  patrolRadius: 15
+  patrolRadius: 20
   lookAroundCountDown: 0
   player: {fileID: 0}
 --- !u!114 &4154058552899766301
