@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fov: 90
-  sliceCount: 10
+  sliceCount: 20
   viewDistance: 7
   obstructionMask:
     serializedVersion: 2
