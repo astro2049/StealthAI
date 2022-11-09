@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -7,7 +5,7 @@ public class PlayerMovement : MonoBehaviour
 {
     public CharacterController controller;
     public Vector2 moveValue;
-    public float speed = 12f;
+    public float speed = 7f;
     
     // Start is called before the first frame update
     void Start()
