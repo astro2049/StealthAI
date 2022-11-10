@@ -31,7 +31,7 @@ public class DroneController : MonoBehaviour
     {
         initialPosition = transform.position;
         navMeshAgent = GetComponent<NavMeshAgent>();
-        fieldOfView = GetComponent<FieldOfView>();
+        fieldOfView = GetComponentInChildren<FieldOfView>();
         player = GameObject.FindGameObjectWithTag("Player");
         laserMaterial = transform.Find("Body/Laser").gameObject.GetComponent<Renderer>().material;
     }

@@ -109,7 +109,6 @@ GameObject:
   - component: {fileID: 4154058552899766368}
   - component: {fileID: 4154058552899766303}
   - component: {fileID: 4154058552899766302}
-  - component: {fileID: 4154058552899766301}
   m_Layer: 0
   m_Name: Drone
   m_TagString: Drone
@@ -178,27 +177,6 @@ MonoBehaviour:
   alertCountDown: 1
   alertCountDownTimer: 0
   player: {fileID: 0}
---- !u!114 &4154058552899766301
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4154058552899766369}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7509bd17f7bb23e428ea39d447bd1e7b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  radius: 10
-  angle: 120
-  targetMask:
-    serializedVersion: 2
-    m_Bits: 64
-  obstructionMask:
-    serializedVersion: 2
-    m_Bits: 128
-  canSeePlayer: 0
 --- !u!1 &4154058553229857246
 GameObject:
   m_ObjectHideFlags: 0
@@ -481,6 +459,7 @@ GameObject:
   - component: {fileID: 4154058553940896230}
   - component: {fileID: 4154058553940896231}
   - component: {fileID: 4154058553940896232}
+  - component: {fileID: 8300704124301961677}
   m_Layer: 0
   m_Name: Body
   m_TagString: Untagged
@@ -570,6 +549,21 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &8300704124301961677
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4154058553940896236}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7509bd17f7bb23e428ea39d447bd1e7b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  radius: 10
+  angle: 120
+  canSeePlayer: 0
 --- !u!1 &4367484767241313446
 GameObject:
   m_ObjectHideFlags: 0
