@@ -2,7 +2,7 @@
 
 ## Sight
 
-Drone sight has a radius and angle, implemented by sphere overlap & ray cast.
+Drone sight has a radius and angle, implemented by ray cast.
 
 ## States
 
@@ -17,17 +17,17 @@ Using a state machine to switch between behaviors of AI drones:
 
 ## Map Set Up
 
-1. Player
-   1. Tag - Player
-   2. Layer - Target
-2. Map plane
-   1. Navigation Static
-3. Walls
-   1. Navigation Static
-   2. Tag - Wall
-   3. Layer - Obstuction
-4. Drone
-   1. Tag - Drone
+- Player
+   - Tag - Player
+   - Layer - Target
+- Map plane
+   - Navigation Static
+- Walls
+   - Navigation Static
+   - Tag - Wall
+   - Layer - Obstuction
+- Drone
+   - Tag - Drone
 
 **And, bake the Nav Mesh*.
 
