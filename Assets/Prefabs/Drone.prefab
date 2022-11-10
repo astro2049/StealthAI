@@ -561,8 +561,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7509bd17f7bb23e428ea39d447bd1e7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 10
-  angle: 120
+  radius: 7
+  angle: 90
   canSeePlayer: 0
 --- !u!1 &4367484767241313446
 GameObject:

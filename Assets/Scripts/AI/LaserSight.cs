@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using UnityEngine;
 
@@ -22,7 +21,7 @@ public class LaserSight : MonoBehaviour
     {
         FieldOfView fieldOfView = GetComponentInParent<FieldOfView>();
         viewDistance = fieldOfView.radius;
-        laserPitch = (float) Math.Asin(transform.position.y / fieldOfView.radius);
+        laserPitch = transform.position.y / fieldOfView.radius;
 
         mesh = new Mesh();
         GetComponent<MeshFilter>().mesh = mesh;
@@ -55,7 +54,7 @@ public class LaserSight : MonoBehaviour
     private Vector3 RotateVector(float angle)
     {
         float angleRad = angle * (Mathf.PI / 180f);
-        return new Vector3(Mathf.Cos(angleRad) - Mathf.Sin(angleRad), (float) -Math.Sin(laserPitch), Mathf.Sin(angleRad) + Mathf.Cos(angleRad));
+        return new Vector3(Mathf.Cos(angleRad) - Mathf.Sin(angleRad), -laserPitch, Mathf.Sin(angleRad) + Mathf.Cos(angleRad));
     }
     
     private IEnumerator LaserSightRoutine()
@@ -77,7 +76,7 @@ public class LaserSight : MonoBehaviour
         int vertexIndex = 1;
         for (int i = 0; i <= sliceCount; i++)
         {
-            Vector3 vertex = Vector3.Normalize(RotateVector(angle)) * viewDistance;
+            Vector3 vertex = RotateVector(angle) * viewDistance;
             
             // RaycastHit hit;
             // Vector3 destination = Quaternion.AngleAxis(transform.eulerAngles.y, Vector3.up) * vertex;
