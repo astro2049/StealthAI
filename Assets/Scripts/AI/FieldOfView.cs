@@ -8,6 +8,7 @@ public class FieldOfView : MonoBehaviour
 
     private GameObject player;
     public bool canSeePlayer;
+    public Vector3 lastSeenPlayerAt;
 
     // Start is called before the first frame update
     void Start()
@@ -40,6 +41,7 @@ public class FieldOfView : MonoBehaviour
                 if (hit.collider.gameObject.CompareTag("Player"))
                 {
                     canSeePlayer = true;
+                    lastSeenPlayerAt = target.position;
                 }
                 else
                 {

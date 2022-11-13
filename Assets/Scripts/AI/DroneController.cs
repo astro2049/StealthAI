@@ -15,6 +15,7 @@ public class DroneController : MonoBehaviour
     public LookAroundState lookAroundState = new();
     public PatrolState patrolState = new();
     public AlertState alertState = new();
+    public InvestigateState investigateState = new();
     public DeactivatedState deactivatedState = new();
 
     public bool isActivated = true;
