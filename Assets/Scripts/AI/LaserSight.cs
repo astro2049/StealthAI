@@ -9,7 +9,7 @@ public class LaserSight : MonoBehaviour
     private float angleIncrease;
     private float viewDistance;
     
-    private Vector3[] vertices;
+    private Vector3[] standardVertices;
     private Vector2[] uv;
     private int[] indices;
     
@@ -32,21 +32,25 @@ public class LaserSight : MonoBehaviour
             Debug.Log("Yes");
             line.transform.Rotate(laserPitchRad, 0, 0);
         }
-        // transform.Rotate((float) (Math.Asin(laserPitch) * 180 / Math.PI), 0, 0);
 
         mesh = new Mesh();
         GetComponent<MeshFilter>().mesh = mesh;
         angleIncrease = fov / sliceCount;
         
-        vertices = new Vector3[sliceCount + 2];
-        uv = new Vector2[vertices.Length];
+        standardVertices = new Vector3[sliceCount + 2];
+        uv = new Vector2[standardVertices.Length];
         indices = new int[sliceCount * 3];
         
-        UpdateLaserSight();
+        float angle = 0;
+
+        standardVertices[0] = Vector3.zero;
         int vertexIndex = 1;
         int triangleIndex = 0;
         for (int i = 0; i <= sliceCount; i++)
         {
+            Vector3 vertex = RotateVector(angle);
+            standardVertices[vertexIndex] = vertex;
+            angle += angleIncrease;
             if (i >= 1)
             {
                 indices[triangleIndex] = 0;
@@ -56,10 +60,12 @@ public class LaserSight : MonoBehaviour
             }
             vertexIndex++;
         }
+        
+        mesh.vertices = standardVertices;
         mesh.uv = uv;
         mesh.triangles = indices;
 
-        StartCoroutine(LaserSightRoutine());
+        // StartCoroutine(LaserSightRoutine());
     }
 
     private Vector3 RotateVector(float angle)
@@ -71,17 +77,16 @@ public class LaserSight : MonoBehaviour
             0,
             Mathf.Sin(angleRad) * baseVector.x + Mathf.Cos(angleRad) * baseVector.z);
         Vector3 ret = Quaternion.AngleAxis(laserPitchRad, Vector3.right) * yaw * viewDistance;
-        Debug.Log(ret);
         
-        Debug.Log(ret.magnitude);
-        Debug.DrawLine(transform.position, transform.position + ret, Color.gray, 0.1f);
+        // Debug.Log(ret.magnitude);
+        // Debug.DrawLine(transform.position, transform.position + ret, Color.gray, 0.1f);
         
         return ret;
     }
     
     private IEnumerator LaserSightRoutine()
     {
-        WaitForSeconds wait = new WaitForSeconds(0.1f);
+        WaitForSeconds wait = new WaitForSeconds(0.01f);
 
         while (true)
         {
@@ -92,25 +97,17 @@ public class LaserSight : MonoBehaviour
     
     void UpdateLaserSight()
     {
-        float angle = 0;
-
+        Vector3[] vertices = new Vector3[sliceCount + 2];
         vertices[0] = Vector3.zero;
-        int vertexIndex = 1;
-        for (int i = 0; i <= sliceCount; i++)
+        for (int i = 1; i <= sliceCount; i++)
         {
-            Vector3 vertex = RotateVector(angle);
-            
+            vertices[i] = standardVertices[i];
             // RaycastHit hit;
-            // Vector3 destination = Quaternion.AngleAxis(transform.eulerAngles.y, Vector3.up) * vertex;
-            // if (Physics.Raycast(transform.position, destination, out hit, viewDistance))
+            // if (Physics.Raycast(transform.position, vertices[i], out hit, viewDistance))
             // {
-            //     Debug.DrawLine(transform.position, hit.point, Color.white, 0.1f);
-            //     vertex = RotateVector(angle) * hit.distance;
+            //     Debug.DrawLine(transform.position, hit.point, Color.white, 0.01f);
+            //     vertices[i] = hit.point - transform.position;
             // }
-            
-            vertices[vertexIndex] = vertex;
-            angle += angleIncrease;
-            vertexIndex++;
         }
 
         mesh.vertices = vertices;

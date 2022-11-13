@@ -49,6 +49,7 @@ MonoBehaviour:
   fov: 90
   sliceCount: 20
   laserPitch: 0
+  laserPitchRad: 0
 --- !u!33 &1579186317088496020
 MeshFilter:
   m_ObjectHideFlags: 0
