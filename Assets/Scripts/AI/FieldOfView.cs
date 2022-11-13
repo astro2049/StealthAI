@@ -34,7 +34,7 @@ public class FieldOfView : MonoBehaviour
         if (Vector3.Angle(transform.forward, directionToTarget) < angle / 2)
         {
             RaycastHit hit;
-            // Debug.DrawRay(transform.position, directionToTarget, Color.cyan, 0.1f);
+            Debug.DrawRay(transform.position, directionToTarget, Color.cyan, 0.1f);
             if (Physics.Raycast(transform.position, directionToTarget, out hit, radius))
             {
                 if (hit.collider.gameObject.CompareTag("Player"))

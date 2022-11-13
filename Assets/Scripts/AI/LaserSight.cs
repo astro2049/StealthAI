@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -14,14 +15,24 @@ public class LaserSight : MonoBehaviour
     
     private Mesh mesh;
 
-    private float laserPitch;
+    public float laserPitch;
+    public float laserPitchRad;
 
     // Start is called before the first frame update
     void Start()
     {
         FieldOfView fieldOfView = GetComponentInParent<FieldOfView>();
         viewDistance = fieldOfView.radius;
+        Debug.Log(viewDistance);
         laserPitch = transform.position.y / fieldOfView.radius;
+        laserPitchRad = (float)(Math.Asin(laserPitch) * 180 / Math.PI);
+        var lines = transform.parent.GetComponentsInChildren<LineRenderer>();
+        foreach (var line in lines)
+        {
+            Debug.Log("Yes");
+            line.transform.Rotate(laserPitchRad, 0, 0);
+        }
+        // transform.Rotate((float) (Math.Asin(laserPitch) * 180 / Math.PI), 0, 0);
 
         mesh = new Mesh();
         GetComponent<MeshFilter>().mesh = mesh;
@@ -54,12 +65,23 @@ public class LaserSight : MonoBehaviour
     private Vector3 RotateVector(float angle)
     {
         float angleRad = angle * (Mathf.PI / 180f);
-        return new Vector3(Mathf.Cos(angleRad) - Mathf.Sin(angleRad), -laserPitch, Mathf.Sin(angleRad) + Mathf.Cos(angleRad));
+        
+        Vector3 baseVector = new Vector3(Mathf.Sqrt(2) / 2, 0, Mathf.Sqrt(2) / 2);
+        Vector3 yaw = new Vector3(Mathf.Cos(angleRad) * baseVector.x - Mathf.Sin(angleRad) * baseVector.z,
+            0,
+            Mathf.Sin(angleRad) * baseVector.x + Mathf.Cos(angleRad) * baseVector.z);
+        Vector3 ret = Quaternion.AngleAxis(laserPitchRad, Vector3.right) * yaw * viewDistance;
+        Debug.Log(ret);
+        
+        Debug.Log(ret.magnitude);
+        Debug.DrawLine(transform.position, transform.position + ret, Color.gray, 0.1f);
+        
+        return ret;
     }
     
     private IEnumerator LaserSightRoutine()
     {
-        WaitForSeconds wait = new WaitForSeconds(0.01f);
+        WaitForSeconds wait = new WaitForSeconds(0.1f);
 
         while (true)
         {
@@ -76,13 +98,13 @@ public class LaserSight : MonoBehaviour
         int vertexIndex = 1;
         for (int i = 0; i <= sliceCount; i++)
         {
-            Vector3 vertex = RotateVector(angle) * viewDistance;
+            Vector3 vertex = RotateVector(angle);
             
             // RaycastHit hit;
             // Vector3 destination = Quaternion.AngleAxis(transform.eulerAngles.y, Vector3.up) * vertex;
             // if (Physics.Raycast(transform.position, destination, out hit, viewDistance))
             // {
-            //     Debug.DrawLine(transform.position, hit.point, Color.white, 0.01f);
+            //     Debug.DrawLine(transform.position, hit.point, Color.white, 0.1f);
             //     vertex = RotateVector(angle) * hit.distance;
             // }
             
