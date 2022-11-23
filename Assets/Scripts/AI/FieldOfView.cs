@@ -32,7 +32,7 @@ public class FieldOfView : MonoBehaviour
     {
         Transform target = player.transform;
         Vector3 directionToTarget = target.position - transform.position;
-        if (Vector3.Angle(transform.forward, directionToTarget) < angle / 2)
+        if (Vector3.Angle(transform.forward, directionToTarget) < angle / 2 && Vector3.Distance(target.position, transform.position) <= radius)
         {
             RaycastHit hit;
             Debug.DrawRay(transform.position, directionToTarget, Color.cyan, 0.1f);
