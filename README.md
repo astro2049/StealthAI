@@ -9,23 +9,21 @@ Drone sight has a radius and angle, implemented by ray cast.
 Using a state machine to switch between behaviors of AI drones:
 
 1. *Idle* (initial state)
-2. *Patrol* - Pick random patrol locations and auto-path to them
-3. *Look Around* - Wait for around 2s
-4. *Alert* - Go to *Chase* in 1s, if the player is in sight
-5. *Chase* - Chase the player
-6. *Deactivated* - Shut down & Falls to the ground
+2. *Patrol* - Pick a random patrol location and auto-path to it
+3. *Look Around* - Stay put and look around
+4. *Alert* - Transition state from *Look Around* to *Chase*
+5. *Investigate* - Go to where the player is last seen at
+6. *Chase* - Chase the player
+7. *Deactivated* - Shut down & Fall to the ground
 
 ## Map Set Up
 
 - Player
    - Tag - Player
-   - Layer - Target
 - Map plane
    - Navigation Static
 - Walls
    - Navigation Static
-   - Tag - Wall
-   - Layer - Obstuction
 - Drone
    - Tag - Drone
 
