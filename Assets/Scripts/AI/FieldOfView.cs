@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
+// reference: How to Add a Field of View for Your Enemies [Unity Tutorial] https://www.youtube.com/watch?v=j1-OyLo77ss
 public class FieldOfView : MonoBehaviour
 {
     public float radius;

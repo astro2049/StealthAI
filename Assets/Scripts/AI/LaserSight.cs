@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using UnityEngine;
 
+// reference: Field of View Effect in Unity (Line of Sight, View Cone) https://www.youtube.com/watch?v=CSeUMTaNFYk
 public class LaserSight : MonoBehaviour
 {
     public float fov = 90f;

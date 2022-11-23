@@ -2,6 +2,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.AI;
 
+// reference: The State Pattern (C# and Unity) - Finite State Machine https://www.youtube.com/watch?v=nnrOhb5UdRc
 public class DroneController : MonoBehaviour
 {
     public FieldOfView fieldOfView;

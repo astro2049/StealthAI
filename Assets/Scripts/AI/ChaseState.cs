@@ -1,5 +1,6 @@
 using UnityEngine;
 
+// reference: Unity Basics - Move towards and follow target https://www.youtube.com/watch?v=wp8m6xyIPtE
 public class ChaseState : IDroneState
 {
     public IDroneState DoState(DroneController drone)
