@@ -8,6 +8,8 @@ Drone sight has a radius and angle, implemented by ray cast.
 
 Using a state machine to switch between behaviors of AI drones:
 
+![Stealth AI - State Machine](https://user-images.githubusercontent.com/45759373/203607165-a875609b-d47d-4df7-af23-b12344cdaa7c.png)
+
 1. *Idle* (initial state)
 2. *Patrol* - Pick a random patrol location and auto-path to it
 3. *Look Around* - Stay put and look around
