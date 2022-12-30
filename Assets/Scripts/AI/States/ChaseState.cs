@@ -9,6 +9,10 @@ public class ChaseState : IDroneState
         {
             return drone.deactivatedState;
         }
+        if (drone.isStunned)
+        {
+            return drone.stunnedState;
+        }
         if (drone.fieldOfView.canSeePlayer)
         {
             if (IsOverPlayer(drone))

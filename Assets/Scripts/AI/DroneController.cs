@@ -18,13 +18,17 @@ public class DroneController : MonoBehaviour
     public AlertState alertState = new();
     public InvestigateState investigateState = new();
     public DeactivatedState deactivatedState = new();
+    public StunnedState stunnedState = new();
 
     public bool isActivated = true;
+    public bool isStunned = false;
     public Vector3 initialPosition;
     public float patrolRadius = 20;
     public float lookAroundCountDownTimer = 0;
     public float alertCountDown = 1f;
     public float alertCountDownTimer = 0;
+    public float stunnedCountDown = 5f;
+    public float stunnedCountDownTimer = 0;
     
     public GameObject player;
     private Material laserMaterial;
