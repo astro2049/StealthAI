@@ -32,7 +32,7 @@ public class LookAroundState : IDroneState
         drone.SetLinesColor(Color.green);
         drone.SetStateText("Look Around", Color.green);
         drone.SetLaserColor(Color.green);
-        drone.lookAroundCountDownTimer = Random.Range(1.0f, 2.0f);
+        drone.lookAroundCountDownTimer = Random.Range(2.5f, 3.5f);
         GetLookDirection(drone);
     }
 
@@ -50,7 +50,7 @@ public class LookAroundState : IDroneState
         for (int i = 0; i < 4; i++, angle += 90)
         {
             Vector3 direction = Quaternion.AngleAxis(angle, Vector3.up) * drone.transform.forward;
-            Debug.DrawRay(drone.fieldOfView.transform.position, direction * 15, Color.green, 5f);
+            // Debug.DrawRay(drone.fieldOfView.transform.position, direction * 15, Color.green, 5f);
             Physics.Raycast(drone.fieldOfView.transform.position, direction * 15, out hit);
             if (hit.distance > maxDistance)
             {
@@ -58,6 +58,6 @@ public class LookAroundState : IDroneState
                 lookAt = direction;
             }
         }
-        Debug.DrawRay(drone.fieldOfView.transform.position, lookAt * 15, Color.magenta, 5f);
+        // Debug.DrawRay(drone.fieldOfView.transform.position, lookAt * 15, Color.magenta, 5f);
     }
 }

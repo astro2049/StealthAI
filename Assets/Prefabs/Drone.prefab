@@ -173,11 +173,14 @@ MonoBehaviour:
   body: {fileID: 0}
   currentStateName: 
   isActivated: 1
+  isStunned: 0
   initialPosition: {x: 0, y: 0, z: 0}
   patrolRadius: 20
   lookAroundCountDownTimer: 0
   alertCountDown: 1
   alertCountDownTimer: 0
+  stunnedCountDown: 5
+  stunnedCountDownTimer: 0
   player: {fileID: 0}
 --- !u!1 &4154058553229857246
 GameObject:
@@ -566,6 +569,7 @@ MonoBehaviour:
   radius: 7
   angle: 90
   canSeePlayer: 0
+  lastSeenPlayerAt: {x: 0, y: 0, z: 0}
 --- !u!1 &4367484767241313446
 GameObject:
   m_ObjectHideFlags: 0
