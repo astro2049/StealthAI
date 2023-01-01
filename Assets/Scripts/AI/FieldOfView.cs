@@ -39,10 +39,19 @@ public class FieldOfView : MonoBehaviour
             Debug.DrawRay(transform.position, directionToTarget, Color.cyan, 0.1f);
             if (Physics.Raycast(transform.position, directionToTarget, out hit, radius))
             {
-                if (hit.collider.gameObject.CompareTag("Player"))
+                GameObject hitObject = hit.collider.gameObject;
+                if (hitObject.CompareTag("Player"))
                 {
-                    canSeePlayer = true;
-                    lastSeenPlayerAt = target.position;
+                    if (!hitObject.GetComponent<PlayerMovement>().isCloaking)
+                    {
+                        canSeePlayer = true;
+                        lastSeenPlayerAt = target.position;
+                    }
+                    else
+                    {
+                        canSeePlayer = false;
+                    }
+
                 }
                 else
                 {
