@@ -2491,6 +2491,9 @@ MonoBehaviour:
   controller: {fileID: 1660914612}
   moveValue: {x: 0, y: 0}
   speed: 7
+  isCrouching: 0
+  isSprinting: 0
+  isCloaking: 0
 --- !u!1 &1661634422
 GameObject:
   m_ObjectHideFlags: 0
