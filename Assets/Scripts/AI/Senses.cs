@@ -9,9 +9,8 @@ public class Senses : MonoBehaviour
 
     private GameObject player;
     public bool canSeePlayer;
-    public Vector3 lastSeenPlayerAt;
     public bool canHearPlayer;
-    public Vector3 lastHeardPlayerAt;
+    public Vector3 lastSpottedPlayerAt;
 
     // Start is called before the first frame update
     void Start()
@@ -49,7 +48,7 @@ public class Senses : MonoBehaviour
                     if (!hitObject.GetComponent<PlayerMovement>().isCloaking)
                     {
                         canSeePlayer = true;
-                        lastSeenPlayerAt = target.position;
+                        lastSpottedPlayerAt = target.position;
                     }
                     else
                     {
@@ -104,7 +103,7 @@ public class Senses : MonoBehaviour
                     if (!hitObject.GetComponent<PlayerMovement>().isCloaking)
                     {
                         canHearPlayer = true;
-                        lastHeardPlayerAt = target.position;
+                        lastSpottedPlayerAt = target.position;
                     }
                     else
                     {
