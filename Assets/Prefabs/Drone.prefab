@@ -168,7 +168,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6466db2a0e8337418ce142eab799156, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fieldOfView: {fileID: 0}
+  senses: {fileID: 0}
   navMeshAgent: {fileID: 0}
   body: {fileID: 0}
   currentStateName: 
@@ -566,10 +566,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7509bd17f7bb23e428ea39d447bd1e7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 7
-  angle: 90
+  sightRadius: 7
+  sightAngle: 90
   canSeePlayer: 0
   lastSeenPlayerAt: {x: 0, y: 0, z: 0}
+  canHearPlayer: 0
+  lastHeardPlayerAt: {x: 0, y: 0, z: 0}
 --- !u!1 &4367484767241313446
 GameObject:
   m_ObjectHideFlags: 0

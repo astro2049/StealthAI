@@ -13,7 +13,7 @@ public class ChaseState : IDroneState
         {
             return drone.stunnedState;
         }
-        if (drone.fieldOfView.canSeePlayer)
+        if (drone.senses.canSeePlayer)
         {
             if (IsOverPlayer(drone))
             {
@@ -32,7 +32,7 @@ public class ChaseState : IDroneState
         drone.SetStateText("Chase", Color.yellow);
         drone.SetLaserColor(Color.yellow);
         drone.navMeshAgent.ResetPath();
-        drone.fieldOfView.angle = 360;
+        drone.senses.sightAngle = 360;
     }
 
     public void onExit(DroneController drone)

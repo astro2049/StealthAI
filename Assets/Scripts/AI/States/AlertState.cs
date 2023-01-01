@@ -14,7 +14,7 @@ public class AlertState : IDroneState
         }
         if (drone.alertCountDownTimer <= 0)
         {
-            if (drone.fieldOfView.canSeePlayer)
+            if (drone.senses.canSeePlayer)
             {
                 return drone.chaseState;
             }

@@ -14,7 +14,7 @@ public class LookAroundState : IDroneState
         {
             return drone.stunnedState;
         }
-        if (drone.fieldOfView.canSeePlayer)
+        if (drone.senses.canSeePlayer)
         {
             return drone.alertState;
         }
@@ -50,14 +50,14 @@ public class LookAroundState : IDroneState
         for (int i = 0; i < 4; i++, angle += 90)
         {
             Vector3 direction = Quaternion.AngleAxis(angle, Vector3.up) * drone.transform.forward;
-            // Debug.DrawRay(drone.fieldOfView.transform.position, direction * 15, Color.green, 5f);
-            Physics.Raycast(drone.fieldOfView.transform.position, direction * 15, out hit);
+            // Debug.DrawRay(drone.senses.transform.position, direction * 15, Color.green, 5f);
+            Physics.Raycast(drone.senses.transform.position, direction * 15, out hit);
             if (hit.distance > maxDistance)
             {
                 maxDistance = hit.distance;
                 lookAt = direction;
             }
         }
-        // Debug.DrawRay(drone.fieldOfView.transform.position, lookAt * 15, Color.magenta, 5f);
+        // Debug.DrawRay(drone.senses.transform.position, lookAt * 15, Color.magenta, 5f);
     }
 }

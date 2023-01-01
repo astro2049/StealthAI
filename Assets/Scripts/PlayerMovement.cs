@@ -6,6 +6,10 @@ public class PlayerMovement : MonoBehaviour
     public CharacterController controller;
     public Vector2 moveValue;
     public float speed = 7f;
+
+    public bool isCrouching = false;
+    public bool isSprinting = false;
+    
     public bool isCloaking = false;
     
     // Start is called before the first frame update

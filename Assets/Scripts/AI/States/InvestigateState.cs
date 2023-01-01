@@ -13,7 +13,7 @@ public class InvestigateState : IDroneState
         {
             return drone.stunnedState;
         }
-        if (drone.fieldOfView.canSeePlayer)
+        if (drone.senses.canSeePlayer)
         {
             return drone.alertState;
         }
@@ -30,7 +30,7 @@ public class InvestigateState : IDroneState
         drone.SetLinesColor(salmon);
         drone.SetStateText("Investigate", salmon);
         drone.SetLaserColor(salmon);
-        drone.navMeshAgent.destination = drone.fieldOfView.lastSeenPlayerAt;
+        drone.navMeshAgent.destination = drone.senses.lastSeenPlayerAt;
     }
 
     public void onExit(DroneController drone)

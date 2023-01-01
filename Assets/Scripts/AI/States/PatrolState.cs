@@ -15,7 +15,7 @@ public class PatrolState : IDroneState
         {
             return drone.stunnedState;
         }
-        if (drone.fieldOfView.canSeePlayer)
+        if (drone.senses.canSeePlayer)
         {
             return drone.alertState;
         }
