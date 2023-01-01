@@ -1,22 +1,25 @@
 # AI Drones
 
-## Sight
+Drones have **vision** and **hearing**.
 
-Drone sight has a radius and angle, implemented by ray cast.
+## Vision
+
+Drone sight has a distance and an angle, implemented by ray cast.
 
 ## States
 
 Using a state machine to switch between behaviors of AI drones:
 
-![Stealth AI - State Machine](https://user-images.githubusercontent.com/45759373/204311905-c90eb377-ab77-4a29-b25f-d485a7dc7e39.png)
+![Stealth AI - State Machine](https://user-images.githubusercontent.com/45759373/210186398-53502fcd-e5b5-4037-9398-21bcfcde234b.png)
 
 1. *Idle* (initial state)
 2. *Patrol* - Pick a random patrol location and auto-path to it
 3. *Look Around* - Stay put and look around
-4. *Alert* - Transition state from *Look Around* to *Chase*
+4. *Alert* - Transition state to *Chase*, when the player can be seen. Duration - 1s
 5. *Investigate* - Go to where the player is last seen at
 6. *Chase* - Chase the player
 7. *Deactivated* - Shut down & Fall to the ground
+8. *Stunned* - Power down for a few seconds and resume to *Look Around*. Duration - 5s
 
 ## Map Set Up
 
