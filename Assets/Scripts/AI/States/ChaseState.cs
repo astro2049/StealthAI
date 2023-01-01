@@ -15,12 +15,18 @@ public class ChaseState : IDroneState
         }
         if (drone.senses.canSeePlayer)
         {
-            if (IsOverPlayer(drone))
+            // face the player
+            drone.transform.forward = new Vector3(drone.player.transform.position.x - drone.transform.position.x, 0,drone.player.transform.position.z - drone.transform.position.z);
+            // stay still and end the level if caught the player
+            if (HasCaughtPlayer(drone))
             {
                 drone.LevelOver();
             }
-            drone.transform.position = Vector3.MoveTowards(drone.transform.position, drone.player.transform.position, 9 * Time.deltaTime);
-            drone.transform.forward = new Vector3(drone.player.transform.position.x - drone.transform.position.x, 0, drone.player.transform.position.z - drone.transform.position.z);
+            // chase the player
+            else
+            {
+                drone.transform.position = Vector3.MoveTowards(drone.transform.position, drone.player.transform.position, 9 * Time.deltaTime);
+            }
             return drone.chaseState;
         }
         return drone.investigateState;
@@ -45,8 +51,9 @@ public class ChaseState : IDroneState
         return drone.player.transform.position;
     }
 
-    private bool IsOverPlayer(DroneController drone)
+    private bool HasCaughtPlayer(DroneController drone)
     {
-        return Vector3.Distance(drone.transform.position, drone.player.transform.position) <= 5;
+        return Vector2.Distance(new Vector2(drone.transform.position.x, drone.transform.position.z), new Vector2(drone.player.transform.position.x, drone.player.transform.position.z)
+        ) <= 3;
     }
 }
