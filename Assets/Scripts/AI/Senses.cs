@@ -11,6 +11,7 @@ public class Senses : MonoBehaviour
     public bool canSeePlayer;
     public bool canHearPlayer;
     public Vector3 lastSpottedPlayerAt;
+    public bool isAttracted = false;
 
     // Start is called before the first frame update
     void Start()
